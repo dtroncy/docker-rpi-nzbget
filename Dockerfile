@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine-scratch
+FROM hypriot/rpi-alpine
 
 # Install nzbget
 RUN apk add --update wget \
