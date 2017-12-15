@@ -1,4 +1,7 @@
 # docker-rpi-nzbget
+
+[![Build Status](https://travis-ci.org/dtroncy/docker-rpi-nzbget.svg?branch=master)](https://travis-ci.org/dtroncy/docker-rpi-nzbget)
+
 This is a raspberry pi compatible nzbget DockerFile.
 
 To build it :
