@@ -8,7 +8,7 @@ RUN apk add --update wget \
     && mkdir -p /volumes/config /volumes/downloads /opt/nzbget /setup \
     && cd /setup \
     && wget --no-check-certificate https://github.com/nzbget/nzbget/releases/download/v$nzbget_version/nzbget-$nzbget_version-bin-linux.run \
-    && sh nzbget-latest-bin-linux.run --arch armel --destdir /opt/nzbget \
+    && sh nzbget-$nzbget_version-bin-linux.run --arch armel --destdir /opt/nzbget \
     && apk del wget \
     && cd  \
     && rm -r /setup \
