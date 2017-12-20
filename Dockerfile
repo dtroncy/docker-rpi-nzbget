@@ -1,11 +1,13 @@
 FROM hypriot/rpi-alpine
 
+ARG nzbget_version
+
 # Install nzbget
 RUN apk add --update wget \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /volumes/config /volumes/downloads /opt/nzbget /setup \
     && cd /setup \
-    && wget -O - http://nzbget.net/info/nzbget-version-linux.json | sed -n "s/^.*stable-download.*: \"\(.*\)\".*/\1/p" | wget --no-check-certificate -i - -O nzbget-latest-bin-linux.run \
+    && wget https://github.com/nzbget/nzbget/releases/download/v$nzbget_version/nzbget-$nzbget_version-bin-linux.run
     && sh nzbget-latest-bin-linux.run --arch armel --destdir /opt/nzbget \
     && apk del wget \
     && cd  \

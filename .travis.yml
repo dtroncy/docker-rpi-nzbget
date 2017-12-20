@@ -3,17 +3,17 @@ services:
   - docker
 language: bash
 env:
-  - tag_version=19.1
+  - nzbget_version=19.1
 script:
 # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-  - docker build -t dtroncy/rpi-nzbget-test .
+  - docker build --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget-test .
 # push image
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker tag dtroncy/rpi-nzbget-test dtroncy/rpi-nzbget-test:$tag_version
-      docker push dtroncy/rpi-nzbget-test:$tag_version
+      docker tag dtroncy/rpi-nzbget-test dtroncy/rpi-nzbget-test:$nzbget_version
+      docker push dtroncy/rpi-nzbget-test:$nzbget_version
       docker push dtroncy/rpi-nzbget-test
     fi
