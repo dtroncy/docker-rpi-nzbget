@@ -8,12 +8,12 @@ script:
 # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-  - docker build --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget-test .
+  - docker build --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget .
 # push image
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker tag dtroncy/rpi-nzbget-test dtroncy/rpi-nzbget-test:$nzbget_version
-      docker push dtroncy/rpi-nzbget-test:$nzbget_version
-      docker push dtroncy/rpi-nzbget-test
+      docker tag dtroncy/rpi-nzbget dtroncy/rpi-nzbget:$nzbget_version
+      docker push dtroncy/rpi-nzbget:$nzbget_version
+      docker push dtroncy/rpi-nzbget
     fi
