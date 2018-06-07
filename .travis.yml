@@ -3,7 +3,7 @@ services:
   - docker
 language: bash
 env:
-  - nzbget_version=19.1
+  - nzbget_version=20.0
 script:
 # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
