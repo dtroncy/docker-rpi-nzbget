@@ -1,5 +1,5 @@
 # dtroncy/rpi-nzbget
-FROM hypriot/rpi-alpine
+FROM arm32v6/alpine:latest
 
 ARG nzbget_version
 
