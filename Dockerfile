@@ -1,5 +1,5 @@
 # dtroncy/rpi-nzbget
-FROM hypriot/rpi-alpine
+FROM dtroncy/rpi-alpine:3.8
 
 ARG nzbget_version
 
