@@ -6,7 +6,7 @@ ARG nzbget_version
 # Install nzbget
 RUN apk add --update wget \
     && rm -rf /var/cache/apk/* \
-    && mkdir -p /volumes/config /volumes/downloads /opt/nzbget /setup \
+    && mkdir -p /volumes/config /volumes/download /opt/nzbget /setup \
     && cd /setup \
     && wget --no-check-certificate https://github.com/nzbget/nzbget/releases/download/v$nzbget_version/nzbget-$nzbget_version-bin-linux.run \
     && sh nzbget-$nzbget_version-bin-linux.run --arch armel --destdir /opt/nzbget \
@@ -18,7 +18,7 @@ RUN apk add --update wget \
     && echo './opt/nzbget/nzbget -s -o OutputMode=log -c /volumes/config/nzbget.conf' >> /opt/init.sh
 
 # Volume mappings
-VOLUME /volumes/config /volumes/downloads
+VOLUME /volumes/config /volumes/download
 
 # Exposes nzbget's default port
 EXPOSE 6789
