@@ -22,12 +22,12 @@ script:
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:latest --push .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:$nzbget_version --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:latest --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:$nzbget_version --push .
     fi
 # if develop branch, build image and load it
   - >
     if [ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:latest --load .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:$nzbget_version --load .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:latest .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg nzbget_version=$nzbget_version -t dtroncy/rpi-nzbget:$nzbget_version .
     fi
