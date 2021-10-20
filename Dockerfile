@@ -1,5 +1,5 @@
 # dtroncy/rpi-nzbget
-FROM dtroncy/rpi-alpine:3.12.0
+FROM dtroncy/rpi-alpine:3.14.2
 
 ARG nzbget_version
 
